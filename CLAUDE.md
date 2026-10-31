@@ -20,6 +20,7 @@ A static portfolio site that presents a frontend developer to recruiters and emp
 ## Folder structure
 
 - `docs/`: `brief.md` (project intent) and the PDF CV that the site offers as a download.
+- `.claude/`: shared Claude Code settings (`settings.json`), including the rules that keep `.env` files unreadable.
 
 Update this section when folders are added.
 
