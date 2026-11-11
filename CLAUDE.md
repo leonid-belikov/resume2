@@ -30,14 +30,18 @@ Everything in the repository is English, with no Russian: code and comments, bra
 
 ## Process
 
-- Work on a branch. Never commit to `main`.
-- Keep commits small and focused.
-- Never push. A human pushes the branch; after that, open the PR with `gh`.
+- Plan first and wait for explicit approval, unless the change fits in one sentence.
+- Work on a new branch named `<type>/<topic>`. Never commit to `main`.
+- Keep commits small. Stage explicit paths (`git add <files>`), never `git add -A`.
+- Before saying the branch is ready, run every available check (tests, lint, typecheck, build) and fix failures.
+- Never push and never merge. When the branch is ready, say so and wait; after the human pushes, open the PR with `gh pr create`.
+- PR description: what and why, assumptions, how it was verified, issues noticed out of scope.
+- If CI exists, read `gh pr checks` and fix failures on the same branch.
 
 ## Working principles
 
 **Ambiguous tasks**
-- State your assumptions. Ask questions at plan time; during implementation, record assumptions in the PR description.
+- State your assumptions. Ask questions at plan time.
 - Stop only before irreversible or risky actions.
 
 **Scope**
@@ -54,7 +58,3 @@ Everything in the repository is English, with no Russian: code and comments, bra
 - Bug: write a failing test first.
 - Logic: add tests together with the code.
 - UI: verify by build and screenshot.
-
-**Planning**
-- A change that fits in one sentence needs no plan.
-- Otherwise, plan first and wait for approval.
