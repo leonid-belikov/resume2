@@ -29,6 +29,7 @@ Update this section when folders are added.
 Everything in the repository is English, with no Russian: code and comments, branch names, commits, issues, PRs, README, `CLAUDE.md` and documentation. Russian is allowed only in chat (including plans) and in private notes outside the repository.
 
 ## Process
+
 - Plan first and wait for explicit approval, unless the change fits in one sentence.
 - Work on a new branch named `<type>/<topic>`. Never commit to `main`.
 - Keep commits small. Stage explicit paths (`git add <files>`), never `git add -A`.
@@ -40,7 +41,7 @@ Everything in the repository is English, with no Russian: code and comments, bra
 ## Working principles
 
 **Ambiguous tasks**
-- State your assumptions. Ask questions at plan time; during implementation, record assumptions in the PR description.
+- State your assumptions. Ask questions at plan time.
 - Stop only before irreversible or risky actions.
 
 **Scope**
@@ -57,7 +58,3 @@ Everything in the repository is English, with no Russian: code and comments, bra
 - Bug: write a failing test first.
 - Logic: add tests together with the code.
 - UI: verify by build and screenshot.
-
-**Planning**
-- A change that fits in one sentence needs no plan.
-- Otherwise, plan first and wait for approval.
