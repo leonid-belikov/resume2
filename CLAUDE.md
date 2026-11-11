@@ -30,7 +30,7 @@ Everything in the repository is English, with no Russian: code and comments, bra
 
 ## Process
 
-- Plan first and wait for explicit approval, unless the change fits in one sentence.
+- Plan first and wait for explicit approval, unless the request fully determines the diff (no choices about what to add, remove or rewrite).
 - Work on a new branch named `<type>/<topic>`. Never commit to `main`.
 - Keep commits small. Stage explicit paths (`git add <files>`), never `git add -A`.
 - Before saying the branch is ready, run every available check (tests, lint, typecheck, build) and fix failures.
