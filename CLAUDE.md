@@ -10,7 +10,7 @@ A static portfolio site that presents a frontend developer to recruiters and emp
 - Hosted on GitHub Pages under `/resume2/`, so every internal link and asset URL must respect the base path.
 - No server features: Server Actions, dynamic route handlers, rewrites and redirects, `next/image` with the default loader. Client-side interactivity is fine.
 - Content is stored in the repository. No backend, blog or CMS.
-- Verify Next.js details against the current documentation when planning.
+- Verify Next.js details against the current documentation when planning. Docs matching the installed version ship in `node_modules/next/dist/docs/`.
 
 ## Code comments
 
