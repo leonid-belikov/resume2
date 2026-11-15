@@ -7,3 +7,5 @@ out/
 .env*
 !.env.example
 .idea/
+next-env.d.ts
+*.tsbuildinfo
