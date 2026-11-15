@@ -10,7 +10,7 @@ A static portfolio site that presents a frontend developer to recruiters and emp
 - Hosted on GitHub Pages under `/resume2/`, so every internal link and asset URL must respect the base path.
 - No server features: Server Actions, dynamic route handlers, rewrites and redirects, `next/image` with the default loader. Client-side interactivity is fine.
 - Content is stored in the repository. No backend, blog or CMS.
-- Verify Next.js details against the current documentation when planning.
+- Verify Next.js details against the current documentation when planning. Docs matching the installed version ship in `node_modules/next/dist/docs/`.
 
 ## Code comments
 
@@ -19,6 +19,8 @@ A static portfolio site that presents a frontend developer to recruiters and emp
 
 ## Folder structure
 
+- `app/`: Next.js App Router routes (`layout.tsx`, `page.tsx`).
+- Root config: `next.config.ts` (static export, base path), `tsconfig.json`, `eslint.config.mjs`.
 - `docs/`: `brief.md` (project intent) and the PDF CV that the site offers as a download.
 - `.claude/`: shared Claude Code settings (`settings.json`), including the rules that keep `.env` files unreadable.
 
