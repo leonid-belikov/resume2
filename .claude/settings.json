@@ -10,10 +10,10 @@
       "mcp__linear-server__list_projects",
       "mcp__linear-server__get_project",
       "mcp__linear-server__list_teams",
-      "mcp__linear-server__get_team"
+      "mcp__linear-server__get_team",
+      "mcp__linear-server__save_issue"
     ],
     "ask": [
-      "mcp__linear-server__save_issue",
       "mcp__linear-server__save_comment"
     ],
     "deny": [
@@ -55,6 +55,19 @@
       "mcp__linear-server__submit_diff_review",
       "mcp__linear-server__update_diff",
       "mcp__linear-server__merge_diff"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "mcp__linear-server__save_issue",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/linear-save-issue-guard.mjs\" || exit 2"
+          }
+        ]
+      }
     ]
   }
 }
