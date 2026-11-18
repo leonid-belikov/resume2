@@ -22,6 +22,7 @@ A static portfolio site that presents a frontend developer to recruiters and emp
 - `app/`: Next.js App Router routes (`layout.tsx`, `page.tsx`).
 - Root config: `next.config.ts` (static export, base path), `tsconfig.json`, `eslint.config.mjs`.
 - `docs/`: `brief.md` (project intent) and the PDF CV that the site offers as a download.
+- `tests/`: `node:test` unit tests for scripts (run with `npm test`).
 - `.claude/`: shared Claude Code settings (`settings.json`), including the rules that keep `.env` files unreadable.
 
 Update this section when folders are added.
@@ -49,6 +50,7 @@ Everything in the repository is English, with no Russian: code and comments, bra
 - Comment on the issue with the approved plan summary and the PR link.
 - Work only on the given issue. Do not create, delete or change other issues or projects.
 - Everything in Linear is in English.
+- Test hooks by piping sample JSON into the hook script; never make real MCP calls that change data to test them.
 
 ## Working principles
 
