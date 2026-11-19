@@ -20,10 +20,11 @@ A static portfolio site that presents a frontend developer to recruiters and emp
 ## Folder structure
 
 - `app/`: Next.js App Router routes (`layout.tsx`, `page.tsx`).
-- Root config: `next.config.ts` (static export, base path), `tsconfig.json`, `eslint.config.mjs`.
+- Root config: `next.config.ts` (static export, base path), `tsconfig.json`, `eslint.config.mjs`, `.nvmrc` (Node version for CI and local development).
 - `docs/`: `brief.md` (project intent) and the PDF CV that the site offers as a download.
 - `tests/`: `node:test` unit tests for scripts (run with `npm test`).
 - `.claude/`: shared Claude Code settings (`settings.json`), including the rules that keep `.env` files unreadable.
+- `.github/workflows/`: GitHub Actions CI (`ci.yml`): lint, typecheck, test and build on pull requests to `main` and pushes to `main`.
 
 Update this section when folders are added.
 
