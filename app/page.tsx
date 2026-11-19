@@ -1,3 +1,7 @@
+// Temporary: deliberate lint failure to verify that CI turns red.
+var ciLintFailure = 1;
+export { ciLintFailure };
+
 export default function Home() {
   return (
     <main>
