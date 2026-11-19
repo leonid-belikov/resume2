@@ -1,5 +1,6 @@
 {
   "permissions": {
+    "defaultMode": "plan",
     "allow": [
       "mcp__linear-server__get_issue",
       "mcp__linear-server__list_issues",
