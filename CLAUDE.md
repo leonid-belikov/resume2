@@ -45,7 +45,7 @@ Everything in the repository is English, with no Russian: code and comments, bra
 ## Linear
 
 - At session start the human gives a Linear issue ID (`AGT-N`). Read the issue with the Linear MCP before planning.
-- Move the issue: `Plan` when planning starts, `Implementation` after plan approval, `Push` when the branch is ready, back to `Implementation` on review fixes. Never set `Review`, `Retro` or `Done`.
+- Move the issue: `Implementation` right after plan approval (sessions start in plan mode, where Linear writes are blocked), `Push` when the branch is ready, back to `Implementation` on review fixes. Never set `Plan`, `Review`, `Retro` or `Done`.
 - When updating the issue, change only its status. Never edit the title, description or other fields; propose changes in the session instead.
 - Comment on the issue with the approved plan summary and the PR link.
 - Work only on the given issue. Do not create, delete or change other issues or projects.
