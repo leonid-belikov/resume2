@@ -21,12 +21,13 @@ function runTool(toolInput) {
   return run(JSON.stringify({ tool_name: 'mcp__linear-server__save_issue', tool_input: toolInput }));
 }
 
-function assertBlocked({ status, stderr }) {
+function assertBlocked({ status, stderr }, reason) {
   assert.equal(status, 2);
   assert.match(stderr, /^Linear save_issue blocked: /);
+  if (reason) assert.match(stderr, reason);
 }
 
-for (const state of ['Plan', 'Implementation', 'Push']) {
+for (const state of ['Implementation', 'Push']) {
   test(`allows a status change to ${state}`, () => {
     const { status, stderr } = runTool({ id: 'AGT-1', state });
     assert.equal(status, 0);
@@ -35,22 +36,25 @@ for (const state of ['Plan', 'Implementation', 'Push']) {
 }
 
 test('blocks an extra field', () => {
-  assertBlocked(runTool({ id: 'AGT-1', state: 'Plan', description: 'x' }));
+  assertBlocked(
+    runTool({ id: 'AGT-1', state: 'Implementation', description: 'x' }),
+    /only "id" and "state"/,
+  );
 });
 
 test('blocks a missing id', () => {
-  assertBlocked(runTool({ state: 'Plan' }));
+  assertBlocked(runTool({ state: 'Implementation' }), /only "id" and "state"/);
 });
 
 for (const id of ['', '   ']) {
   test(`blocks an empty id ${JSON.stringify(id)}`, () => {
-    assertBlocked(runTool({ id, state: 'Plan' }));
+    assertBlocked(runTool({ id, state: 'Implementation' }), /"id" must be a non-empty/);
   });
 }
 
-for (const state of ['Review', 'Done']) {
+for (const state of ['Plan', 'Review', 'Done']) {
   test(`blocks a status change to ${state}`, () => {
-    assertBlocked(runTool({ id: 'AGT-1', state }));
+    assertBlocked(runTool({ id: 'AGT-1', state }), new RegExp(`status "${state}" is not allowed`));
   });
 }
 

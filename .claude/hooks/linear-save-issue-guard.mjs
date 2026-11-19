@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 // PreToolUse hook for mcp__linear-server__save_issue.
-// Allows only a status change of an existing issue to Plan, Implementation or Push.
+// Allows only a status change of an existing issue to Implementation or Push.
+// Plan is set by the human before the session; sessions start in plan mode,
+// where Linear writes are blocked anyway.
 // Exit code 2 blocks the call; stderr is shown to the agent as the reason.
 import { readFileSync } from 'node:fs';
 
-const ALLOWED_STATES = ['Plan', 'Implementation', 'Push'];
+const ALLOWED_STATES = ['Implementation', 'Push'];
 
 function block(reason) {
   process.stderr.write(`Linear save_issue blocked: ${reason}\n`);
