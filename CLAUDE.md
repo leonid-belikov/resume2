@@ -24,7 +24,7 @@ Product intent (goal, audience, site structure, content, MVP criteria) is in `do
 - `docs/`: `brief.md` (project intent) and the PDF CV that the site offers as a download.
 - `tests/`: `node:test` unit tests for scripts (run with `npm test`).
 - `.claude/`: shared Claude Code settings (`settings.json`), including the rules that keep `.env` files unreadable.
-- `.github/workflows/`: GitHub Actions CI (`ci.yml`): lint, typecheck, test and build on pull requests to `main` and pushes to `main`.
+- `.github/workflows/`: GitHub Actions CI (`ci.yml`): lint, typecheck, test and build on pull requests to `main` and pushes to `main`; job `deploy` publishes `out/` to GitHub Pages on pushes to `main` and manual runs.
 
 Update this section when folders are added.
 
