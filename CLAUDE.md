@@ -2,7 +2,7 @@
 
 A static portfolio site that presents a frontend developer to recruiters and employers.
 
-@docs/brief.md
+Product intent (goal, audience, site structure, content, MVP criteria) is in `docs/brief.md`. Read it when planning user-facing features: pages, content or site structure.
 
 ## Stack and static export
 
