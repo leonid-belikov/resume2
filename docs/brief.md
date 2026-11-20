@@ -1,6 +1,6 @@
 # Brief: portfolio site
 
-Updated: 2026-10-25. This is the project's Intent: the starting point for choosing the stack, writing `CLAUDE.md` and splitting work into issues.
+Updated: 2026-11-20. This is the project's Intent: the starting point for choosing the stack, writing `CLAUDE.md` and splitting work into issues.
 
 ## Goal and audience
 - Primary audience: recruiters and employers.
@@ -34,7 +34,7 @@ Assumption: experience/skills stay on the home page as short blocks, with no sep
 - Static export limitations: no server features (Server Actions, dynamic route handlers, rewrites and redirects, `next/image` optimization with the default loader). Client-side interactivity is possible; if a server part is ever needed, that is a separate decision. Verify details against the current documentation at the planning stage.
 
 ## Rules for the agent (to be moved into `CLAUDE.md`)
-- For Next.js-specific code (App Router, server and client components, `'use client'`, `generateStaticParams`, `basePath`, static export), leave short "why" comments of 1–3 lines. Do not comment the obvious. Give longer explanations in the plan and in the PR description.
+- Comment only non-obvious decisions specific to this project. Do not explain how frameworks or libraries work, and do not comment the obvious. Keep comments short; put detailed rationale in the plan and the PR description.
 - Everything visible in the public GitHub repository is written in English, with no Russian: code and comments, branch names, commits, issues, PRs, README, `CLAUDE.md`, documentation. Russian is allowed only in chat (including the plan) and in private notes outside the repository.
 
 ## Hosting and environments

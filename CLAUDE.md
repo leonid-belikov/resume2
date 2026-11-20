@@ -14,8 +14,8 @@ A static portfolio site that presents a frontend developer to recruiters and emp
 
 ## Code comments
 
-- For Next.js-specific code (server and client components, `'use client'`, `generateStaticParams`, `basePath`, static export), leave short "why" comments of 1-3 lines.
-- Do not comment the obvious. Put longer explanations in the plan and the PR description.
+- Comment only non-obvious decisions specific to this project. Do not explain how frameworks or libraries work, and do not comment the obvious.
+- Keep comments short. Put detailed rationale in the plan and the PR description.
 
 ## Folder structure
 
