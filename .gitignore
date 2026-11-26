@@ -4,6 +4,9 @@ CLAUDE.local.md
 node_modules/
 .next/
 out/
+.open-next/
+.wrangler/
+.dev.vars*
 .env*
 !.env.example
 .idea/

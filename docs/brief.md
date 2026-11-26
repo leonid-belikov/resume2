@@ -1,6 +1,6 @@
 # Brief: portfolio site
 
-Updated: 2026-11-20. This is the project's Intent: goal, audience, site structure, content and MVP criteria. Agent rules and technical conventions live in `CLAUDE.md`.
+Updated: 2026-11-26. This is the project's Intent: goal, audience, site structure, content and MVP criteria. Agent rules and technical conventions live in `CLAUDE.md`.
 
 ## Goal and audience
 - Primary audience: recruiters and employers.
@@ -24,18 +24,18 @@ Assumption: experience/skills stay on the home page as short blocks, with no sep
 - Texts: the agent drafts, Leonid edits.
 
 ## Technical constraints
-- Static site: no backend, blog or CMS.
+- No database, blog or CMS.
 - Content is stored in the repository.
-- Hosting on GitHub Pages: the site lives under the `/resume2/` path, so the stack must support a base path.
+- Hosting on Cloudflare Workers (Free plan); the site is served at the root path.
 
 ## Stack
-- **Next.js with static export** (`output: 'export'`, `basePath` set to `/resume2`).
-- Reasons: Next.js is frequently required in job postings, and the site should show hands-on work with it; interactivity will be added gradually later.
-- Static export limitations and how they apply to the code: see `CLAUDE.md`, section "Stack and static export".
+- **Next.js on Cloudflare Workers** via the OpenNext adapter.
+- Reasons: Next.js is frequently required in job postings, and the site should show hands-on work with it; interactivity will be added gradually later. A server runtime lets pages render per request, for example a view mode chosen by a query parameter, without a flash of the wrong content.
+- Setup and limitations: see `CLAUDE.md`, section "Stack and hosting".
 
 ## Hosting and environments
 - Repository: https://github.com/leonid-belikov/resume2
-- Test environment: GitHub Pages, https://leonid-belikov.github.io/resume2/, deployed via CI.
+- Test environment: Cloudflare Worker `resume2-test` on `workers.dev`, deployed via CI on pushes to `main`.
 - Later: production on a custom domain (a separate task).
 
 ## Design

@@ -1,15 +1,18 @@
 # Portfolio site
 
-A static portfolio site that presents a frontend developer to recruiters and employers.
+A portfolio site that presents a frontend developer to recruiters and employers.
 
 Product intent (goal, audience, site structure, content, MVP criteria) is in `docs/brief.md`. Read it when planning user-facing features: pages, content or site structure.
 
-## Stack and static export
+## Stack and hosting
 
-- Next.js (App Router) with static export: `output: 'export'`, `basePath: '/resume2'`.
-- Hosted on GitHub Pages under `/resume2/`, so every internal link and asset URL must respect the base path.
-- No server features: Server Actions, dynamic route handlers, rewrites and redirects, `next/image` with the default loader. Client-side interactivity is fine.
-- Content is stored in the repository. No backend, blog or CMS.
+- Next.js (App Router), built with the OpenNext adapter (`@opennextjs/cloudflare`) and served by Cloudflare Workers at the root path.
+- Pages are prerendered unless they read request data; request-time rendering runs in the Worker.
+- Wrangler config: `wrangler.jsonc`. Deploy only through a named environment; `test` is the Worker `resume2-test` on `workers.dev`.
+- `npm run preview` runs the build in the local Workers runtime; `npm run deploy` deploys `test` (CI does this on pushes to `main`).
+- Workers Free plan: the compressed Worker must stay under 3 MiB.
+- OpenNext caching (ISR, incremental cache) and image optimization are not set up, so do not use `next/image` with the default loader or ISR.
+- Content is stored in the repository. No database, blog or CMS.
 - Verify Next.js details against the current documentation when planning. Docs matching the installed version ship in `node_modules/next/dist/docs/`.
 
 ## Code comments
@@ -20,11 +23,12 @@ Product intent (goal, audience, site structure, content, MVP criteria) is in `do
 ## Folder structure
 
 - `app/`: Next.js App Router routes (`layout.tsx`, `page.tsx`).
-- Root config: `next.config.ts` (static export, base path), `tsconfig.json`, `eslint.config.mjs`, `.nvmrc` (Node version for CI and local development).
+- `public/`: static files served as Workers assets; `_headers` sets caching headers for them.
+- Root config: `next.config.ts`, `open-next.config.ts` (OpenNext adapter), `wrangler.jsonc` (Worker and environments), `tsconfig.json`, `eslint.config.mjs`, `.nvmrc` (Node version for CI and local development).
 - `docs/`: `brief.md` (project intent) and the PDF CV that the site offers as a download.
 - `tests/`: `node:test` unit tests for scripts (run with `npm test`).
 - `.claude/`: shared Claude Code settings (`settings.json`), including the rules that keep `.env` files unreadable.
-- `.github/workflows/`: GitHub Actions CI (`ci.yml`): lint, typecheck, test and build on pull requests to `main` and pushes to `main`; job `deploy` publishes `out/` to GitHub Pages on pushes to `main` and manual runs.
+- `.github/workflows/`: GitHub Actions CI (`ci.yml`): lint, typecheck, test and build on pull requests to `main` and pushes to `main`; job `deploy` deploys the `test` Worker on pushes to `main` and manual runs, using Cloudflare secrets of the GitHub environment `test`.
 
 Update this section when folders are added.
 
