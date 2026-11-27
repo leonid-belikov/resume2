@@ -1,6 +1,6 @@
 // Runs the save_issue guard hook as a child process, the same way Claude Code does:
 // hook input JSON on stdin, decision by exit code (0 allows, 2 blocks).
-import { test } from 'node:test';
+import { test } from 'vitest';
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
@@ -9,7 +9,9 @@ const HOOK = fileURLToPath(
   new URL('../.claude/hooks/linear-save-issue-guard.mjs', import.meta.url),
 );
 
-function run(stdin) {
+type Result = { status: number | null; stderr: string };
+
+function run(stdin: string): Result {
   const { status, stderr } = spawnSync(process.execPath, [HOOK], {
     input: stdin,
     encoding: 'utf8',
@@ -17,11 +19,11 @@ function run(stdin) {
   return { status, stderr };
 }
 
-function runTool(toolInput) {
+function runTool(toolInput: Record<string, unknown>): Result {
   return run(JSON.stringify({ tool_name: 'mcp__linear-server__save_issue', tool_input: toolInput }));
 }
 
-function assertBlocked({ status, stderr }, reason) {
+function assertBlocked({ status, stderr }: Result, reason?: RegExp) {
   assert.equal(status, 2);
   assert.match(stderr, /^Linear save_issue blocked: /);
   if (reason) assert.match(stderr, reason);
