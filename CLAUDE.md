@@ -22,11 +22,18 @@ Product intent (goal, audience, site structure, content, MVP criteria) is in `do
 
 ## Folder structure
 
-- `app/`: Next.js App Router routes (`layout.tsx`, `page.tsx`).
+- `app/`: Next.js App Router routes (`layout.tsx`, `page.tsx`) and their component tests (`*.test.tsx`, next to the component).
 - `public/`: static files served as Workers assets; `_headers` sets caching headers for them.
-- Root config: `next.config.ts`, `open-next.config.ts` (OpenNext adapter), `wrangler.jsonc` (Worker and environments), `tsconfig.json`, `eslint.config.mjs`, `.nvmrc` (Node version for CI and local development).
+- Root config: `next.config.ts`, `open-next.config.ts` (OpenNext adapter), `wrangler.jsonc` (Worker and environments), `vitest.config.mts` and `vitest.setup.ts` (tests), `tsconfig.json`, `eslint.config.mjs`, `.nvmrc` (Node version for CI and local development).
 - `docs/`: `brief.md` (project intent) and the PDF CV that the site offers as a download.
-- `tests/`: `node:test` unit tests for scripts (run with `npm test`).
+- `tests/`: unit tests for scripts (`*.test.ts`).
+
+## Tests
+
+- Vitest runs all tests; the file extension picks the environment: `*.test.tsx` runs in jsdom (component tests with React Testing Library), `*.test.ts` runs in Node.
+- Component tests live next to the component; script tests live in `tests/`.
+- `npm test` runs all tests once; `npm run test:watch` runs them in watch mode.
+- Async Server Components cannot be rendered by Vitest; cover them with E2E tests.
 - `.claude/`: shared Claude Code settings (`settings.json`), including the rules that keep `.env` files unreadable.
 - `.github/workflows/`: GitHub Actions CI (`ci.yml`): lint, typecheck, test and build on pull requests to `main` and pushes to `main`; job `deploy` deploys the `test` Worker on pushes to `main` and manual runs, using Cloudflare secrets of the GitHub environment `test`.
 
