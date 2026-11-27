@@ -51,7 +51,7 @@ Everything in the repository is English, with no Russian: code and comments, bra
 - Before saying the branch is ready, run every available check (tests, lint, typecheck, build) and fix failures.
 - Never push and never merge. When the branch is ready, say so and wait; after the human pushes, open the PR with `gh pr create`.
 - After the PR is merged, do not switch branches, pull or delete branches. Cleanup is done by the human; if asked, reply with the commands to run instead.
-- PR description: what and why, assumptions, how it was verified (for each acceptance criterion of the issue: the evidence, or "not verifiable before merge"), issues noticed out of scope, `Fixes <ISSUE-ID>`.
+- PR description: what and why, assumptions, how it was verified (for each acceptance criterion of the issue: the evidence, or "not verifiable before merge"; when the diff itself is the evidence, as for docs or config changes, write "see the diff"), issues noticed out of scope, `Fixes <ISSUE-ID>`.
 - If CI exists, read `gh pr checks` and fix failures on the same branch.
 
 ## Linear
